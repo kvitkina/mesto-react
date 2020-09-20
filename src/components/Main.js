@@ -23,8 +23,6 @@ React.useEffect(() => {
     setCards(res)
   })
 },[])
-console.log(cards)
-
 
   return (
     <main className="content">
@@ -40,17 +38,11 @@ console.log(cards)
 
     <div className="elements">
       <ul className="elements__list">
-        <template className="elements__template">
-       {cards.map(item =>
+       {cards.map(card =>
             <Card
-            card={{
-              name: item.name,
-              link: item.link,
-              likes: item.likes,
-              id: item._id
-            }}/>
+            card={card}
+            onCardClick = {props.onCardClick}/>
           )} 
-        </template>
       </ul>
     </div>
 

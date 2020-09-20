@@ -6,24 +6,29 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup'
 
 
-function App() {
+const  App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
+  const [selectedCard, setSelectedCard] = React.useState(null)
 
-  function handleEditAvatarClick () {
+  const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true)
   }
-  function handleEditProfileClick () {
+  const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true)
   }
-  function handleAddPlaceClick () {
+  const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen(true)
   }
-  function closeAllPopups () {
+  const handleCardClick = (selectedCard) => {
+    setSelectedCard(selectedCard)
+  }
+  const closeAllPopups = () => {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
+    setSelectedCard(null)
   }
 
   return (
@@ -34,15 +39,16 @@ function App() {
         onEditAvatar = {handleEditAvatarClick}
         onEditProfile = {handleEditProfileClick}
         onAddPlace = {handleAddPlaceClick}
+        onCardClick = {handleCardClick}
       />
       <Footer />
       <PopupWithForm name='edit-profile' title='Редактировать профиль' submit='Сохранить' isOpen = {isEditProfilePopupOpen} onClose = {closeAllPopups}>
         <div className="popup__input-container">
-          <input type="text" id="name" name="name" className="popup__name popup__input" value="Жак-Ив Кусто" required minLength="2" maxLength="40"/>
+          <input type="text" id="name" name="name" className="popup__name popup__input" value="" required minLength="2" maxLength="40"/>
           <span className="popup__input-error" id="name-error"></span>
         </div>
         <div className="popup__input-container">
-          <input type="text" id="job" name="about" className="popup__job popup__input" value="Исследователь океана"required minLength="2" maxLength="200"/>
+          <input type="text" id="job" name="about" className="popup__job popup__input" value="" required minLength="2" maxLength="200"/>
           <span className="popup__input-error" id="job-error"></span>
         </div>
       </PopupWithForm>
@@ -63,7 +69,7 @@ function App() {
         </div>
       </PopupWithForm>
       <PopupWithForm name='delete' title='Вы уверенны?' submit='Да'/>
-      <ImagePopup />
+      <ImagePopup name = 'photo-zoom' card={selectedCard} onClose = {closeAllPopups}/>
       </div>
     </div>
   )
