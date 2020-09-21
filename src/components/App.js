@@ -42,29 +42,82 @@ const  App = () => {
         onCardClick = {handleCardClick}
       />
       <Footer />
-      <PopupWithForm name='edit-profile' title='Редактировать профиль' submit='Сохранить' isOpen = {isEditProfilePopupOpen} onClose = {closeAllPopups}>
+      <PopupWithForm 
+        name='edit-profile'
+        title='Редактировать профиль' 
+        submit='Сохранить' 
+        isOpen = {isEditProfilePopupOpen} 
+        onClose = {closeAllPopups}>
         <div className="popup__input-container">
-          <input type="text" id="name" name="name" className="popup__name popup__input" value="" required minLength="2" maxLength="40"/>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            className="popup__name popup__input" 
+            placeholder="Имя" 
+            value="" 
+            required 
+            minLength="2" 
+            maxLength="40"/>
           <span className="popup__input-error" id="name-error"></span>
         </div>
         <div className="popup__input-container">
-          <input type="text" id="job" name="about" className="popup__job popup__input" value="" required minLength="2" maxLength="200"/>
+          <input 
+            type="text" 
+            id="job" 
+            name="about" 
+            className="popup__job popup__input" 
+            placeholder="Профессия" 
+            value=""
+            required 
+            minLength="2" 
+            maxLength="200"/>
           <span className="popup__input-error" id="job-error"></span>
         </div>
       </PopupWithForm>
-      <PopupWithForm name='add-place' title='Новое место' submit='Создать' isOpen = {isAddPlacePopupOpen} onClose = {closeAllPopups}>
+      <PopupWithForm 
+        name='add-place' 
+        title='Новое место' 
+        submit='Создать' 
+        isOpen = {isAddPlacePopupOpen} 
+        onClose = {closeAllPopups}>
         <div className="popup__input-container">
-          <input type="text" id="place" name="name" className="popup__name popup__name_theme_place popup__input" placeholder="Название" required minLength="1" maxLength="30"/>
+          <input 
+            type="text" 
+            id="place" 
+            name="name" 
+            className="popup__name popup__name_theme_place popup__input" 
+            placeholder="Название" 
+            required 
+            minLength="1" 
+            maxLength="30"/>
           <span className="popup__input-error" id="place-error"></span>
         </div>
         <div className="popup__input-container">
-          <input type="url" id="link" name="link" className="popup__job popup__job_theme_place popup__input" placeholder="Ссылка на картинку" required/>
+          <input 
+            type="url" 
+            id="link" 
+            name="link" 
+            className="popup__job popup__job_theme_place popup__input" 
+            placeholder="Ссылка на картинку" 
+            required/>
           <span className="popup__input-error" id="link-error"></span>
         </div>
       </PopupWithForm>
-      <PopupWithForm name='edit-avatar' title='Обновить аватар' submit='Сохранить' isOpen = {isEditAvatarPopupOpen} onClose = {closeAllPopups}>
+      <PopupWithForm 
+        name='edit-avatar' 
+        title='Обновить аватар' 
+        submit='Сохранить' 
+        isOpen = {isEditAvatarPopupOpen} 
+        onClose = {closeAllPopups}>
         <div className="popup__input-container">
-          <input type="url" id="link" name="avatar" className="popup__job popup__job_theme_place popup__input" placeholder="Ссылка на аватар" required />
+          <input 
+            type="url" 
+            id="link" 
+            name="avatar" 
+            className="popup__job popup__job_theme_place popup__input" 
+            placeholder="Ссылка на аватар" 
+            required />
           <span className="popup__input-error" id="link-error"></span>
         </div>
       </PopupWithForm>
