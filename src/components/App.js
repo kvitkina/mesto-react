@@ -55,7 +55,7 @@ const  App = () => {
             name="name" 
             className="popup__name popup__input" 
             placeholder="Имя" 
-            value="" 
+            defaultValue="" 
             required 
             minLength="2" 
             maxLength="40"/>
@@ -68,7 +68,7 @@ const  App = () => {
             name="about" 
             className="popup__job popup__input" 
             placeholder="Профессия" 
-            value=""
+            defaultValue=""
             required 
             minLength="2" 
             maxLength="200"/>
