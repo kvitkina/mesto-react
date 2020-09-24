@@ -58,7 +58,8 @@ const  App = () => {
             defaultValue="" 
             required 
             minLength="2" 
-            maxLength="40"/>
+            maxLength="40"
+          />
           <span className="popup__input-error" id="name-error"></span>
         </div>
         <div className="popup__input-container">
@@ -71,7 +72,8 @@ const  App = () => {
             defaultValue=""
             required 
             minLength="2" 
-            maxLength="200"/>
+            maxLength="200"
+          />
           <span className="popup__input-error" id="job-error"></span>
         </div>
       </PopupWithForm>
@@ -80,7 +82,8 @@ const  App = () => {
         title='Новое место' 
         submit='Создать' 
         isOpen = {isAddPlacePopupOpen} 
-        onClose = {closeAllPopups}>
+        onClose = {closeAllPopups}
+      >
         <div className="popup__input-container">
           <input 
             type="text" 
@@ -90,7 +93,8 @@ const  App = () => {
             placeholder="Название" 
             required 
             minLength="1" 
-            maxLength="30"/>
+            maxLength="30"
+          />
           <span className="popup__input-error" id="place-error"></span>
         </div>
         <div className="popup__input-container">
@@ -109,7 +113,8 @@ const  App = () => {
         title='Обновить аватар' 
         submit='Сохранить' 
         isOpen = {isEditAvatarPopupOpen} 
-        onClose = {closeAllPopups}>
+        onClose = {closeAllPopups}
+      >
         <div className="popup__input-container">
           <input 
             type="url" 
@@ -117,7 +122,8 @@ const  App = () => {
             name="avatar" 
             className="popup__job popup__job_theme_place popup__input" 
             placeholder="Ссылка на аватар" 
-            required />
+            required 
+          />
           <span className="popup__input-error" id="link-error"></span>
         </div>
       </PopupWithForm>

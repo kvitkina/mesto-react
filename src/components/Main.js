@@ -38,8 +38,9 @@ React.useEffect(() => {
       <ul className="elements__list">
        {cards.map(card =>
             <Card key={card._id}
-            card={card}
-            onCardClick = {onCardClick}/>
+              card={card}
+              onCardClick = {onCardClick}
+            />
           )} 
       </ul>
     </div>

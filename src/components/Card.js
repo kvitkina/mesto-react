@@ -11,7 +11,8 @@ function Card ({card, onCardClick}) {
         style={{ backgroundImage: `url(${card.link})` }} 
         className="element__image"
         alt=""
-        onClick={handleClick}/>
+        onClick={handleClick}
+      />
       <div className="element__trash"></div>
       <div className="element__info">
         <h3 className="element__title">{card.name}</h3>
