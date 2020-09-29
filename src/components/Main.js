@@ -1,35 +1,22 @@
-import React from 'react';
-import api from '../utils/Api';
+import React from 'react'
 import Card from './Card'
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
-function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
-  const [userName, setUserName] = React.useState()
-  const [userDescription, setUserDescription] = React.useState()
-  const [userAvatar, setUserAvatar] = React.useState()
-  const [cards, setCards] = React.useState([])
-
-React.useEffect(() => {
-    api.getAllInfo()
-    .then(res => {
-      const [dataCards, dataProfile] = res
-      setUserName(dataProfile.name)
-      setUserDescription(dataProfile.about)
-      setUserAvatar(dataProfile.avatar)
-      setCards(dataCards)
-    })
-  },[])
+function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDislike, onCardDelete}) {
+  const currentUser = React.useContext(CurrentUserContext)
 
   return (
     <main className="content">
     <section className="profile">
       <button 
         className="profile__avatar" 
-        style={{ backgroundImage: `url(${userAvatar})` }} 
-        onClick={onEditAvatar}/>
+        style={{ backgroundImage: `url(${currentUser.avatar})` }} 
+        onClick={onEditAvatar}
+      />
       <div className="profile__info">
-        <h1 className="profile__name">{userName}</h1>
+        <h1 className="profile__name">{currentUser.name}</h1>
         <button className="profile__edit-button" onClick={onEditProfile}/>
-      <p className="profile__job">{userDescription}</p>
+      <p className="profile__job">{currentUser.about}</p>
       </div>
       <button className="profile__add-button" onClick={onAddPlace}/>
     </section>
@@ -40,6 +27,9 @@ React.useEffect(() => {
             <Card key={card._id}
               card={card}
               onCardClick = {onCardClick}
+              onCardDelete = {onCardDelete}
+              onCardLike = {onCardLike}
+              onCardDislike = {onCardDislike}
             />
           )} 
       </ul>
