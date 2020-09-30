@@ -3,7 +3,7 @@ import React from 'react';
 function PopupWithForm ({isOpen, children, onClose, name, title, submit, onSubmit}) {
 
   return (
-    <section className={`popup popup_${name} ${isOpen ? `popup_opened` : ''} `}>
+    <section className={`popup popup_${name} ${isOpen && `popup_opened`} `}>
     <div className="popup__container">
       <button className="popup__close" onClick={onClose}/>
       <form className="popup__form-container"  name={name} onSubmit={onSubmit} noValidate>

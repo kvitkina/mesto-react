@@ -40,7 +40,11 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
         <button className="popup__close"/>
         <h2 className="popup__title popup__title_theme_delete">Вы уверенны?</h2> 
         <form className="popup__form-container" name="popup-delete"> 
-          <input type="submit" className="popup__button popup__button_theme_delete" defaultValue="Да"/> 
+          <input
+           type="submit" 
+           className="popup__button popup__button_theme_delete" 
+           defaultValue="Да"
+          /> 
         </form> 
       </div> 
     </section>
