@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup'
-import api from '../utils/Api';
+import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext'
 import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
@@ -20,17 +20,14 @@ const  App = () => {
   const [cards, setCards] = React.useState([])
   
   React.useEffect(() => {
-    api.getInitialCards()
+    api.getAllInfo()
     .then(res => {
-     setCards(res)
+      const [dataCards, dataProfile] = res
+      setCards(dataCards)
+      setCurrentUser(dataProfile)
     })
-  },[])
-  React.useEffect(() => {
-    api.getUserInfo()
-    .then (res => {
-      setCurrentUser(res)
-    })
-  },[])
+    .catch((err) => { console.log(err) })
+  }, [])
 
   const handleCardLike = (card) => {
     const isLiked = card.likes.some(i => i._id === currentUser._id) // Снова проверяем, есть ли уже лайк на этой карточке
@@ -39,6 +36,7 @@ const  App = () => {
       const newCards = cards.map((c) => c._id === card._id ? newCard : c) // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
       setCards(newCards)  // Обновляем стейт
     })
+    .catch((err) => { console.log(err) })
   }
   
   const handleCardDislike = (card) => {
@@ -48,6 +46,7 @@ const  App = () => {
       const newCards = cards.map((c) => c._id === card._id ? newCard : c) // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
       setCards(newCards)  // Обновляем стейт
     })
+    .catch((err) => { console.log(err) })
   }
 
   const handleCardDelete = (id) => {
@@ -56,6 +55,7 @@ const  App = () => {
       const newCards = cards.filter(item => item._id !== id)
       setCards (newCards)
     })
+    .catch((err) => { console.log(err) })
   }
 
   const handleUpdateUser = (data) => {
@@ -64,6 +64,7 @@ const  App = () => {
       setCurrentUser(res)
       closeAllPopups()
     })
+    .catch((err) => { console.log(err) })
   }
 
   const handleUpdateAvatar = (data) => {
@@ -72,6 +73,7 @@ const  App = () => {
       setCurrentUser(res)
       closeAllPopups()
     })
+    .catch((err) => { console.log(err) })
   }
 
   const handleAddPlaceSubmit = (newCard) => {
@@ -80,6 +82,7 @@ const  App = () => {
       setCards([newCard, ...cards])
       closeAllPopups()
     })
+    .catch((err) => { console.log(err) })
   }
 
   const handleEditAvatarClick = () => {
