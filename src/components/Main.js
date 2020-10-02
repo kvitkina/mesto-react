@@ -56,3 +56,4 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onC
 export default Main
 
    
+   
