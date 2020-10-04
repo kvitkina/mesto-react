@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.b6d1af2d.chunk.css",
-    "main.js": "./static/js/main.37aa3061.chunk.js",
-    "main.js.map": "./static/js/main.37aa3061.chunk.js.map",
+    "main.css": "./static/css/main.abd6e3e1.chunk.css",
+    "main.js": "./static/js/main.7a329c8a.chunk.js",
+    "main.js.map": "./static/js/main.7a329c8a.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.a5163ae5.js",
     "runtime-main.js.map": "./static/js/runtime-main.a5163ae5.js.map",
     "static/js/2.6e4763c2.chunk.js": "./static/js/2.6e4763c2.chunk.js",
     "static/js/2.6e4763c2.chunk.js.map": "./static/js/2.6e4763c2.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.d1dfeeb4b3aafeba12bd512def6ac1ab.js": "./precache-manifest.d1dfeeb4b3aafeba12bd512def6ac1ab.js",
+    "precache-manifest.cca30e02943d3a9aa5cee0f1dfab0335.js": "./precache-manifest.cca30e02943d3a9aa5cee0f1dfab0335.js",
     "service-worker.js": "./service-worker.js",
-    "static/css/main.b6d1af2d.chunk.css.map": "./static/css/main.b6d1af2d.chunk.css.map",
+    "static/css/main.abd6e3e1.chunk.css.map": "./static/css/main.abd6e3e1.chunk.css.map",
     "static/js/2.6e4763c2.chunk.js.LICENSE.txt": "./static/js/2.6e4763c2.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/pen.d476a8b8.svg",
     "static/media/logo-mesto.svg": "./static/media/logo-mesto.c6f11019.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.a5163ae5.js",
     "static/js/2.6e4763c2.chunk.js",
-    "static/css/main.b6d1af2d.chunk.css",
-    "static/js/main.37aa3061.chunk.js"
+    "static/css/main.abd6e3e1.chunk.css",
+    "static/js/main.7a329c8a.chunk.js"
   ]
 }
