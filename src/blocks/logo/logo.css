@@ -1,10 +1,10 @@
 .logo {
- cursor: pointer;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 425px) {
   .logo {
-  width: 104px;
-  height: 24px;
-}
+    width: 104px;
+    height: 24px;
+  }
 }

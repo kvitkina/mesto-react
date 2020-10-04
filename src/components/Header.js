@@ -1,11 +1,11 @@
-import React from 'react';
-import logo from '../images/logo-mesto.svg';
+import React from 'react'
+import logo from '../images/logo-mesto.svg'
 
-function Header () {
+function Header() {
   return (
-      <header className="header">
-        <img src={logo} className="logo" alt="Логотип"/>
-      </header>
+    <header className="header">
+      <img src={logo} className="logo" alt="Логотип" />
+    </header>
   )
 }
 

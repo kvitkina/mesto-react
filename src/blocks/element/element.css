@@ -7,13 +7,12 @@
 @import url('./__like-counter/element__like-counter.css');
 
 .element {
- max-width: 282px;
- min-height: 362px;
- box-sizing: border-box;
- background-color: #FFF;
- border-radius: 10px;
- position: relative;
- display: flex;
- flex-direction: column;
+  max-width: 282px;
+  min-height: 362px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-
