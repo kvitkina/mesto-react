@@ -4,7 +4,7 @@ function PopupWithForm({ isOpen, children, onClose, name, title, submit, onSubmi
   return (
     <section
       className={`popup popup_${name} ${isOpen && `popup_opened`} `}
-      onClick={(evt) => evt.target === evt.currentTarget && { onClose }}
+      //onClick={(evt) => evt.target === evt.currentTarget && { onClose }}
     >
       <div className="popup__container">
         <button className="popup__close" onClick={onClose} />

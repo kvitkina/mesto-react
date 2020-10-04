@@ -9,12 +9,16 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext'
 import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
+import ConfirmDeletePopup from './ConfirmDeletePopup'
 
 const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false)
+
   const [selectedCard, setSelectedCard] = React.useState(null)
+  const [cardToDelete, setCardToDelete] = React.useState(null)
   const [currentUser, setCurrentUser] = React.useState({})
   const [cards, setCards] = React.useState([])
 
@@ -41,7 +45,7 @@ const App = () => {
     return () => {
       document.removeEventListener('keydown', handleEscClose)
     }
-  })
+  },[])
 
   const handleCardLike = (card) => {
     const isLiked = card.likes.some((i) => i._id === currentUser._id) // Снова проверяем, есть ли уже лайк на этой карточке
@@ -129,11 +133,16 @@ const App = () => {
   const handleCardClick = (selectedCard) => {
     setSelectedCard(selectedCard)
   }
+  const handleDeleteClick = (cardId) => {
+    setIsDeletePopupOpen(true)
+    setCardToDelete(cardId)
+  }
   const closeAllPopups = () => {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
     setIsEditAvatarPopupOpen(false)
     setSelectedCard(null)
+    setIsDeletePopupOpen(false)
   }
 
   return (
@@ -146,7 +155,7 @@ const App = () => {
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onCardClick={handleCardClick}
-            onCardDelete={handleCardDelete}
+            onCardDelete={handleDeleteClick}
             onCardLike={handleCardLike}
             onCardDislike={handleCardDislike}
             cards={cards}
@@ -167,7 +176,12 @@ const App = () => {
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
           />
-          <PopupWithForm name="delete" title="Вы уверенны?" submit="Да" />
+          <ConfirmDeletePopup
+            isOpen={isDeletePopupOpen}
+            onClose={closeAllPopups}
+            cardId={cardToDelete}
+            onSubmit={handleCardDelete}
+          />
           <ImagePopup name="photo-zoom" card={selectedCard} onClose={closeAllPopups} />
         </div>
       </div>
