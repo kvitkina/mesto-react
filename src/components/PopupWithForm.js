@@ -1,10 +1,12 @@
 import React from 'react'
 
-function PopupWithForm({ isOpen, children, onClose, name, title, submit, onSubmit }) {
+function PopupWithForm({
+  isOpen, children, onClose, name, title, submit, onSubmit, onOverlayClose
+}) {
   return (
     <section
       className={`popup popup_${name} ${isOpen && `popup_opened`} `}
-      //onClick={(evt) => evt.target === evt.currentTarget && { onClose }}
+      onClick={onOverlayClose}
     >
       <div className="popup__container">
         <button className="popup__close" onClick={onClose} />

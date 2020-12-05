@@ -1,7 +1,7 @@
 import React from 'react'
 import PopupWithForm from './PopupWithForm'
 
-function AddPlacePopup({ onClose, isOpen, onAddPlace }) {
+function AddPlacePopup({ onClose, isOpen, onAddPlace, onOverlayClose }) {
   const nameRef = React.useRef()
   const linkRef = React.useRef()
 
@@ -22,6 +22,7 @@ function AddPlacePopup({ onClose, isOpen, onAddPlace }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      onOverlayClose={onOverlayClose}
     >
       <div className="popup__input-container">
         <input

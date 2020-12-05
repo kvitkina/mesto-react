@@ -2,7 +2,6 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import Main from './Main'
-import PopupWithForm from './PopupWithForm'
 import ImagePopup from './ImagePopup'
 import api from '../utils/Api'
 import { CurrentUserContext } from '../contexts/CurrentUserContext'
@@ -16,7 +15,6 @@ const App = () => {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false)
-
   const [selectedCard, setSelectedCard] = React.useState(null)
   const [cardToDelete, setCardToDelete] = React.useState(null)
   const [currentUser, setCurrentUser] = React.useState({})
@@ -30,9 +28,7 @@ const App = () => {
         setCards(dataCards)
         setCurrentUser(dataProfile)
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err));
   }, [])
 
   React.useEffect(() => {
@@ -46,6 +42,13 @@ const App = () => {
       document.removeEventListener('keydown', handleEscClose)
     }
   },[])
+
+  const handleOverlayClose = (e) => {
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+    closeAllPopups();
+  }
 
   const handleCardLike = (card) => {
     const isLiked = card.likes.some((i) => i._id === currentUser._id) // Снова проверяем, есть ли уже лайк на этой карточке
@@ -68,9 +71,7 @@ const App = () => {
         const newCards = cards.map((c) => (c._id === card._id ? newCard : c)) // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
         setCards(newCards) // Обновляем стейт
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err));
   }
 
   const handleCardDelete = (id) => {
@@ -80,9 +81,7 @@ const App = () => {
         const newCards = cards.filter((item) => item._id !== id)
         setCards(newCards)
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err));
   }
 
   const handleUpdateUser = (data) => {
@@ -92,9 +91,7 @@ const App = () => {
         setCurrentUser(res)
         closeAllPopups()
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err));
   }
 
   const handleUpdateAvatar = (data) => {
@@ -104,9 +101,7 @@ const App = () => {
         setCurrentUser(res)
         closeAllPopups()
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err));
   }
 
   const handleAddPlaceSubmit = (newCard) => {
@@ -116,9 +111,7 @@ const App = () => {
         setCards([newCard, ...cards])
         closeAllPopups()
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err));
   }
 
   const handleEditAvatarClick = () => {
@@ -165,24 +158,33 @@ const App = () => {
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
+            onOverlayClose={handleOverlayClose}
           />
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
+            onOverlayClose={handleOverlayClose}
           />
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
+            onOverlayClose={handleOverlayClose}
           />
           <ConfirmDeletePopup
             isOpen={isDeletePopupOpen}
             onClose={closeAllPopups}
             cardId={cardToDelete}
             onSubmit={handleCardDelete}
+            onOverlayClose={handleOverlayClose}
           />
-          <ImagePopup name="photo-zoom" card={selectedCard} onClose={closeAllPopups} />
+          <ImagePopup 
+            name="photo-zoom"
+            card={selectedCard}
+            onClose={closeAllPopups}
+            onOverlayClose={handleOverlayClose}
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>
