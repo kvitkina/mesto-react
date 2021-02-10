@@ -12,6 +12,7 @@ function AddPlacePopup({ onClose, isOpen, onAddPlace, onOverlayClose }) {
       name: nameRef.current.value,
       link: linkRef.current.value,
     })
+    e.target.reset()
   }
 
   return (
